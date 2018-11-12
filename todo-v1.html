@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<title>todo</title>
+
+<head>add a task</head>
+<input type="text" id="text">
+<br />
+<br />
+<p><b>Added task</b></p>
+<ul id="list"></ul>
+<button onclick="add()">add</button>
+
+<body>
+    <script>
+        let textHandle = document.getElementById('text');
+        let listHandle = document.getElementById('list');
+
+        function add() {
+            let li = document.createElement('li');
+            let input = document.createElement('input');
+            input.type = 'checkbox';
+            input.id = 'checkbox';
+
+            let label = document.createElement('label');
+            label.htmlFor = 'checkbox';
+            let text = document.createTextNode(textHandle.value);
+            label.appendChild(text);
+            let inputHandle = document.getElementById('checkbox');
+            listHandle.appendChild(input);
+
+            li.appendChild(label);
+            listHandle.appendChild(li);
+
+            textHandle.value = '';
+            input.addEventListener('change', function () {
+                if(input.checked){
+                    let s = document.createElement('s');
+                s.appendChild(text);
+                console.log(s);
+                li.appendChild(s);
+                console.log(li);
+                }else{
+                    li.appendChild(text);
+                }
+               
+            }, false)
+
+        }
+
+
+    </script>
+</body>
+
+</html>

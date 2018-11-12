@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<title>
+    cart
+</title>
+
+<body>
+    <h3>available items</h3>
+    <ol id="list"></ol>
+    <li id="here"></li>
+    <h3>Added items</h3>
+    <ol id="anoList"></ol>
+
+    <script>
+        //<button id="btn"> add to cart </button>
+        let listHandle = document.getElementById('list');
+        let anoListHandle = document.getElementById('anoList');
+        let hereHandle = document.getElementById('here');
+
+        let addToCart = document.createTextNode('add to cart');
+        let items = [{ name: 'shoe', quantity: 10 }, { name: 'bag', quantity: 11 }, { name: 'pen', quantity: 8 }];
+
+        // let btnHandle = document.getElementById('btn');
+
+
+        function createChilds() {
+            items.forEach((item, i) => {
+                output = `${item.name} - ${item.quantity}`;
+                
+
+                button = document.createElement('button');      //creating button dynamically <button></button>
+                button.id = item.name;
+                button.className = 'button';
+                id = document.createAttribute('id');            //creating 'id' dynamically  
+                // id.value = 'btn';                                  //assigning value to id  `id=btn`
+                // button.setAttributeNode(id);                           //inserting id inside button `<button                                                               id="btn"></button>`
+                text = document.createTextNode('add to cart');          //creating text 
+                button.appendChild(text);                             // `<button id="btn"> add to cart</button>`     
+                br = document.createElement('br');                      //</br>
+                listHandle.appendChild(br);                             //adding a space
+                listHandle.innerHTML = listHandle.innerHTML + `<li>` + output + `</li>`;
+
+                listHandle.appendChild(button);                       //displaying button on                                                                                                         web page
+                listHandle.appendChild(br);                             //adding a break
+                let x = item.quantity;
+                x--;
+                for (let i = 0; i < allButtons.length; i++) {
+                    allButtons[i].addEventListener('click', function () {
+                    
+                    })
+                }
+            });
+
+        }
+        let allButtons = document.getElementsByClassName('button');
+
+        function start() {
+            for (let i = 0; i < allButtons.length; i++) {
+                allButtons[i].addEventListener('click', function () {
+                    i += 1;
+                    anoListHandle.innerHTML = `${this.id} - ${i}`;
+                })
+            }
+        }
+
+        start(createChilds());
+    </script>
+</body>
+
+</html>
