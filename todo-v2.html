@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<title>todo</title>
+
+<head>add a task</head>
+<input type="text" id="text">
+<br />
+<br />
+<p><b>Added task</b></p>
+<ul id="list"></ul>
+<b>
+    <p id="removeId">completed tasks</p>
+</b>
+<ul id="listRemove"></ul>
+<button onclick="add()">add</button>
+
+<body>
+    <script>
+        let textHandle = document.getElementById('text');
+        let listHandle = document.getElementById('list');
+        let removeHandle = document.getElementById('removeId');
+        let listRemoveHandle = document.getElementById('listRemove');
+
+        let j = 0;
+        function add() {
+            let li = document.createElement('li');
+            li.id = j++;
+            li.className = 'name';
+            let input = document.createElement('input');
+
+            let text = document.createTextNode(textHandle.value);
+            let completed = document.createTextNode('move to completed task')
+            let p = document.createElement('p');
+            p.id = li.id;
+            p.className = 'ptag';
+
+            p.appendChild(completed);
+
+            listHandle.appendChild(li);
+
+            textHandle.value = '';
+
+            li.appendChild(text);
+
+            li.appendChild(p);
+            let y = document.getElementsByClassName('name');
+            let z = document.getElementsByClassName('ptag');
+            let pTagId = document.getElementById('ptag');
+            let clear = document.createTextNode(' ');
+            //console.log(i);
+
+            for (let i = 0; i < 1; i++) {
+                li.addEventListener('click', function () {
+                    let x = document.getElementById(this.id);
+                    //let y = x.firstElementChild;
+                   /// console.log(x,y);
+                    listHandle.removeChild(x);
+                    listRemoveHandle.appendChild(x);
+                    x.removeChild(x.firstElementChild);
+                    listRemoveHandle.appendChild(document.createTextNode('move to uncompleted task'));
+                }, false);
+            }
+        }
+
+            for(let i = 0; i < 1; i++){
+                listRemoveHandle.addEventListener('click',function() {
+                
+                })
+            }
+
+
+    </script>
+</body>
+
+</html>
